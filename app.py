@@ -1,4 +1,8 @@
+from asyncio import run_coroutine_threadsafe
 import streamlit as st
+from app_eda import run_eda
+
+from app_home import run_home
 
 
 
