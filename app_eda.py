@@ -67,15 +67,15 @@ def run_eda() :
     if st.checkbox('가격, 다운로드 수, 평점의 상관관계 분석 차트보기') :
         col1, col2, col3 = st.columns(3)
 
-        meta_down = Image.open('data\Metascore & Download Corr.png')
+        meta_down = Image.open('data/Metascore & Download Corr.png')
         col1.header("Metascore & Download Corr")
         col1.image(meta_down, use_column_width=True)
         
-        price_down = Image.open('data\Price & Download Corr.png')
+        price_down = Image.open('data/Price & Download Corr.png')
         col2.header("Price & Download Corr")
         col2.image(price_down, use_column_width=True)
 
-        price_meta = Image.open('data\Metascore & Price Corr.png')
+        price_meta = Image.open('data/Metascore & Price Corr.png')
         col3.header("price & Metascore Corr")
         col3.image(price_meta, use_column_width=True)
 
