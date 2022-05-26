@@ -57,6 +57,13 @@ def run_eda() :
     game_price_Owners_corr_df = df[['Game','Price','Download']].sort_values('Price', ascending=False)
 
     st.subheader('')
+    st.title('')
+    st.text('Metascore가 가장 높은 게임입니다.')
+    st.dataframe(df.loc[df['Metascore'] == df['Metascore'].max()])
+    st.text('Metascore가 가장 낮은 게임입니다. ')
+    st.dataframe(df.loc[df['Metascore'] == df['Metascore'].min()])
+    st.subheader('')
+
     if st.checkbox('가격, 다운로드 수, 평점의 상관관계 분석 차트보기') :
         col1, col2, col3 = st.columns(3)
 
@@ -75,7 +82,7 @@ def run_eda() :
     else :
         st.text('')
     
-    pg_gm_df = pd.read_csv('data\pg_gm_df.csv')
+    
     if st.checkbox('게임회사별 판매중인 게임의 갯수와 평균평점보기') :
         public_meta_mean_df = df.groupby('Publishers')['Metascore'].mean().to_frame()
         public_count_game_df = df.groupby('Publishers')['Game'].count().to_frame()
