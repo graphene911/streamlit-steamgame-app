@@ -13,7 +13,7 @@ st.set_page_config(layout="wide")
 
 
 
-img = Image.open('data\steam_logo2.jpg')
+img1 = Image.open('data\steam_logo2.jpg')
 st.image(img, width=1035)
 st.subheader('')
 st.info('이 앱은 스팀게임의 평점 및 가격데이터를 확인하는 앱 입니다.')
@@ -21,7 +21,7 @@ st.title('')
 
 
 menu = ['Home', 'Game Info']
-img = Image.open('data\steam_logo1.jpg')
+img2 = Image.open('data\steam_logo1.jpg')
 st.sidebar.image(img, width=305)
 
     
