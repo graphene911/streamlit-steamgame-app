@@ -1,5 +1,3 @@
-from asyncio import run_coroutine_threadsafe
-from turtle import color
 import streamlit as st
 import pandas as pd
 from PIL import Image
