@@ -17,36 +17,27 @@ def main() :
     img1 = Image.open('data/steam_logo2.jpg')
     st.image(img1, width=1035)
     st.subheader('')
-    st.info('이 앱은 스팀게임의 평점 및 가격데이터를 확인하는 앱 입니다.')
+    st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
+    
     st.title('')
 
-
-    
-    img2 = Image.open('data/steam_logo1.jpg')
-    st.sidebar.image(img2, width=305)
-
-        
-
-    df = pd.read_csv('data/steam.csv', index_col=0)
-    game_serch = st.sidebar.text_input('게임 검색')
-    result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
-
-    
-    st.dataframe(result)
-    
     url = 'https://www.youtube.com/watch?v=82Y1azoaUhI'
 
     st_player(url)
 
     
+    img2 = Image.open('data/steam_logo1.jpg')
+    st.sidebar.image(img2, width=305)
 
-    st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
-
+    st.subheader('검색하신 게임을 확인하세요.')
     
     df = pd.read_csv('data/steam.csv', index_col=0)
+    
+    game_serch = st.sidebar.text_input('게임 검색')
+    result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
 
-    st.info('본 데이터는 2022-05-20 기준 데이터입니다. Reference : https://www.kaggle.com/datasets/eringray/steam-games-dataset.')
-
+    st.dataframe(result)
+    st.text('본 데이터는 2022-05-20 기준 데이터입니다. \nReference : https://www.kaggle.com/datasets/eringray/steam-games-dataset.')
     st.title('')
     
     st.subheader('Game Type별 인기순위 TOP10')
