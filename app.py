@@ -90,7 +90,7 @@ def main() :
     
     st.text('Price가 가장 높은 게임입니다.')
     st.dataframe(df.loc[df['Price'] == df['Price'].max()])
-    st.text('Price가 가장 낮은 게임입니다.')
+    st.text('무료 게임 리스트 입니다.')
     st.dataframe(df.loc[df['Price'] == df['Price'].min()])
     st.subheader('')
     
