@@ -87,6 +87,11 @@ def main() :
     st.dataframe(df.loc[df['Metascore'] == df['Metascore'].max()])
     st.text('Metascore가 가장 낮은 게임입니다.')
     st.dataframe(df.loc[df['Metascore'] == df['Metascore'].min()])
+    
+    st.text('Price가 가장 높은 게임입니다.')
+    st.dataframe(df.loc[df['Price'] == df['Price'].max()])
+    st.text('Price가 가장 낮은 게임입니다.')
+    st.dataframe(df.loc[df['Price'] == df['Price'].min()])
     st.subheader('')
     
 
