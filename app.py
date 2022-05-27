@@ -41,7 +41,7 @@ def main() :
     result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
 
     st.dataframe(result)
-    st.text('본 데이터는 2022-05-20 기준 데이터입니다. \nReference : https://www.kaggle.com/datasets/eringray/steam-games-dataset.')
+    
     st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
     
@@ -150,8 +150,10 @@ def main() :
     else :
         st.text('')
     
-
-
+    st.title('')
+    st.title('')
+    st.title('')
+    st.text('데이터는 2022-05-20 기준 데이터입니다. \nReference : https://www.kaggle.com/datasets/eringray/steam-games-dataset.')
 
 
 
