@@ -30,10 +30,9 @@ def main() :
     game_serch = st.sidebar.text_input('게임 검색')
     result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
 
-    if st.button('게임검색 확인') :
-        st.dataframe(result)
-    else :
-        st.text('')
+    
+    st.dataframe(result)
+    
 
     choice = st.sidebar.selectbox('메뉴 선택', menu)
 
