@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
-import seaborn as sns
+import seaborn as sb
 
 
 
@@ -54,7 +54,7 @@ def run_eda() :
     if len(column_list) != 0 :
         st.dataframe(df[column_list])
 
-    game_price_Owners_corr_df = df[['Game','Price','Download']].sort_values('Price', ascending=False)
+    
 
     st.subheader('')
     st.title('')
@@ -63,25 +63,56 @@ def run_eda() :
     st.text('Metascore가 가장 낮은 게임입니다. ')
     st.dataframe(df.loc[df['Metascore'] == df['Metascore'].min()])
     st.subheader('')
+    
 
-    if st.checkbox('가격, 다운로드 수, 평점의 상관관계 분석 차트보기') :
-        col1, col2, col3 = st.columns(3)
-
-        meta_down = Image.open('data/Metascore & Download Corr.png')
-        col1.header("Metascore & Download Corr")
-        col1.image(meta_down, use_column_width=True)
+    
+    if st.checkbox('가격, 다운로드 수의 상관관계 및 분석 차트보기') :
+               
+        game_price_down_corr_df = df[['Game','Price','Download']].sort_values('Price', ascending=False)
+        fig1 = plt.figure()
         
-        price_down = Image.open('data/Price & Download Corr.png')
-        col2.header("Price & Download Corr")
-        col2.image(price_down, use_column_width=True)
-
-        price_meta = Image.open('data/Metascore & Price Corr.png')
-        col3.header("price & Metascore Corr")
-        col3.image(price_meta, use_column_width=True)
-
+        sb.regplot(data=game_price_down_corr_df, x='Price', y='Download')
+        plt.title('Price & Download Corr')
+        plt.xlabel('Price')
+        plt.ylabel('Download')
+        plt.show()
+                
+        st.pyplot(fig1)
+        st.dataframe(game_price_down_corr_df.corr())
     else :
         st.text('')
-    
+
+    if st.checkbox('평점, 다운로드 수의 상관관계 분석 및 차트보기') :
+               
+        game_meta_down_corr_df = df[['Game','Metascore','Download']].sort_values('Metascore', ascending=False)
+        fig2 = plt.figure()
+        
+        sb.regplot(data=game_meta_down_corr_df, x='Metascore', y='Download')
+        plt.title('Metascore & Download Corr')
+        plt.xlabel('Metascore')
+        plt.ylabel('Download')
+        plt.show()
+                
+        st.pyplot(fig2)
+        st.dataframe(game_meta_down_corr_df.corr())
+    else :
+        st.text('')
+
+    if st.checkbox('가격과 평점의 상관관계 분석 및 차트보기') :
+               
+        game_meta_price_corr_df = df[['Game','Metascore','Price']].sort_values('Price', ascending=False)
+        fig3 = plt.figure()
+        
+        sb.regplot(data=game_meta_price_corr_df, x='Metascore', y='Price')
+        plt.title('Metascore & Price Corr')
+        plt.xlabel('Metascore')
+        plt.ylabel('Price')
+        plt.show()
+                
+        st.pyplot(fig3)
+        st.dataframe(game_meta_price_corr_df.corr())
+    else :
+        st.text('')
     
     if st.checkbox('게임회사별 판매중인 게임의 갯수와 평균평점보기') :
         public_meta_mean_df = df.groupby('Publishers')['Metascore'].mean().to_frame()
