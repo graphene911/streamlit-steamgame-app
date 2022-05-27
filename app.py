@@ -12,18 +12,20 @@ def main() :
 
     st.set_page_config(layout="wide")
 
-
+    st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
 
     img1 = Image.open('data/steam_logo2.jpg')
+    
     st.image(img1, width=1035)
+    url = 'https://cdn.akamai.steamstatic.com/steamdeck/images/video/trailerloop_short.mp4?origin=https://store.steampowered.com/'
+
+    st.video(url)
     st.subheader('')
-    st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
+    
     
     st.title('')
 
-    url = 'https://www.youtube.com/watch?v=82Y1azoaUhI'
-
-    st_player(url)
+    
 
     
     img2 = Image.open('data/steam_logo1.jpg')
@@ -44,8 +46,7 @@ def main() :
     
     game_type_list = ['Strategy', 'Action', 'RPG', 'Adventure', 'Indie', 'Simulation','Sports']
 
-    my_choice = st.selectbox('Game Type 선택', game_type_list)
-
+    my_choice = st.sidebar.selectbox('TOP 10 Game Type 선택', game_type_list)
     if my_choice == game_type_list[0] :
         st.write('Stratgy 인기 TOP 10')
         st.dataframe(df.loc[df['Game_Type'] == 'Strategy'].head(10))
@@ -76,13 +77,11 @@ def main() :
     if len(column_list) != 0 :
         st.dataframe(df[column_list])
 
-    
-
     st.subheader('')
     st.title('')
     st.text('Metascore가 가장 높은 게임입니다.')
     st.dataframe(df.loc[df['Metascore'] == df['Metascore'].max()])
-    st.text('Metascore가 가장 낮은 게임입니다. ')
+    st.text('Metascore가 가장 낮은 게임입니다.')
     st.dataframe(df.loc[df['Metascore'] == df['Metascore'].min()])
     st.subheader('')
     
