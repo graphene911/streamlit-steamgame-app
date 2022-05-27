@@ -34,6 +34,8 @@ def main() :
     st.subheader('검색하신 게임을 확인하세요.')
     
     df = pd.read_csv('data/steam.csv', index_col=0)
+    df = df.drop('Average_Hours-Played_Since_2009', axis=1)
+    df = df.drop('Median_Hours_Played_Since_2009', axis=1)
     
     game_serch = st.sidebar.text_input('게임 검색')
     result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
@@ -69,6 +71,7 @@ def main() :
         st.write('Sports 인기 TOP 10')
         st.dataframe(df.loc[df['Game_Type'] == 'Sports'].head(10))
 
+    st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
 
     column_list = df.columns
