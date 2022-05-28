@@ -74,9 +74,21 @@ def main() :
 
     st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
-
+    
+    df_free = df.loc[ df['Price'] == 0 ]
+    df_free = df_free.sort_values('Download', ascending=False).head(100)
+    
+    free_game_serch = st.sidebar.text_input('무료게임 TOP100 검색')
+    result2 = df_free.loc[ df_free['Game'].str.lower().str.contains(free_game_serch.lower()),]
+    
+    st.subheader('무료게임 인기 TOP 100')
+    st.dataframe(result2)
+    st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
+    st.title('')
+    
+    
     column_list = df.columns
-    column_list = st.multiselect('스팀게임 데이터 카테고리별 보기 (중복 선택 가능)', column_list)
+    column_list = st.multiselect('스팀게임 데이터 컬럼별 보기 (중복 선택 가능)', column_list)
 
     if len(column_list) != 0 :
         st.dataframe(df[column_list])
@@ -90,10 +102,7 @@ def main() :
     
     st.text('Price가 가장 높은 게임입니다.')
     st.dataframe(df.loc[df['Price'] == df['Price'].max()])
-    st.text('무료 게임 리스트 입니다.')
-    st.dataframe(df.loc[df['Price'] == df['Price'].min()])
-    st.subheader('')
-    
+    st.title('')
 
     
     if st.checkbox('가격, 다운로드 수의 상관관계 및 분석 차트보기') :
