@@ -24,7 +24,7 @@ def main() :
     
     
     st.title('')
-
+    st.title('Game Info')
     
 
     
@@ -86,7 +86,7 @@ def main() :
     st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
     
-    
+    st.title('EDA')
     column_list = df.columns
     column_list = st.multiselect('스팀게임 데이터 컬럼별 보기 (중복 선택 가능)', column_list)
 
