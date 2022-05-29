@@ -93,6 +93,10 @@ def main() :
     if len(column_list) != 0 :
         st.dataframe(df[column_list])
 
+    st.title('')
+    st.text('스팀게임의 게임수, 최대, 최소, 표준편차에 대한 값 입니다.')
+    st.dataframe(df.describe())
+
     st.subheader('')
     st.title('')
     st.text('Metascore가 가장 높은 게임입니다.')
