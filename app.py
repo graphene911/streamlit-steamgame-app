@@ -114,7 +114,7 @@ def main() :
 
     df_max = df.loc[df[selected_col] == df[selected_col].max(),]
     df_min = df.loc[df[selected_col] == df[selected_col].min(),]
-    
+    st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.text('{}컬럼의 최대값에 해당하는 데이터 입니다.'.format(selected_col))
     st.dataframe(df_max)
     st.text('{}컬럼의 최소값에 해당하는 데이터 입니다.'.format(selected_col))
@@ -122,7 +122,6 @@ def main() :
 
     selected_list = st.multiselect('컬럼들 선택', col_list)
 
-    # print(selected_list)
 
     if len(selected_list) > 1 :
         fig1 = sb.pairplot(data=df[selected_list])
