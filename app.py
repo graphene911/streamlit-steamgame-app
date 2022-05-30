@@ -94,8 +94,8 @@ def main() :
         st.dataframe(df[column_list])
 
     st.title('')
-    st.text('스팀게임의 기본 통계치입니다.')
-    st.dataframe(df.describe())
+    if st.checkbox('스팀게임의 기본 통계치입니다.') :
+        st.dataframe(df.describe())
     
     if st.checkbox('게임회사별 판매중인 게임의 갯수와 평균평점보기') :
         public_meta_mean_df = df.groupby('Publishers')['Metascore'].mean().to_frame()
