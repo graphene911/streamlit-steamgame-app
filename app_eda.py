@@ -7,8 +7,6 @@ import seaborn as sb
 
 
 def run_eda() :
-    
-    
     st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
 
     
