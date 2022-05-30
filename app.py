@@ -94,68 +94,8 @@ def main() :
         st.dataframe(df[column_list])
 
     st.title('')
-    st.text('스팀게임의 게임수, 최대, 최소, 표준편차에 대한 값 입니다.')
+    st.text('스팀게임의 기본 통계치입니다.')
     st.dataframe(df.describe())
-
-    st.subheader('')
-    st.title('')
-    st.text('Metascore가 가장 높은 게임입니다.')
-    st.dataframe(df.loc[df['Metascore'] == df['Metascore'].max()])
-    st.text('Metascore가 가장 낮은 게임입니다.')
-    st.dataframe(df.loc[df['Metascore'] == df['Metascore'].min()])
-    
-    st.text('Price가 가장 높은 게임입니다.')
-    st.dataframe(df.loc[df['Price'] == df['Price'].max()])
-    st.title('')
-
-    
-    if st.checkbox('가격, 다운로드 수의 상관관계 및 분석 차트보기') :
-               
-        game_price_down_corr_df = df[['Game','Price','Download']].sort_values('Price', ascending=False)
-        fig1 = plt.figure()
-        
-        sb.regplot(data=game_price_down_corr_df, x='Price', y='Download')
-        plt.title('Price & Download Corr')
-        plt.xlabel('Price')
-        plt.ylabel('Download')
-        plt.show()
-                
-        st.pyplot(fig1)
-        st.dataframe(game_price_down_corr_df.corr())
-    else :
-        st.text('')
-
-    if st.checkbox('평점, 다운로드 수의 상관관계 분석 및 차트보기') :
-               
-        game_meta_down_corr_df = df[['Game','Metascore','Download']].sort_values('Metascore', ascending=False)
-        fig2 = plt.figure()
-        
-        sb.regplot(data=game_meta_down_corr_df, x='Metascore', y='Download')
-        plt.title('Metascore & Download Corr')
-        plt.xlabel('Metascore')
-        plt.ylabel('Download')
-        plt.show()
-                
-        st.pyplot(fig2)
-        st.dataframe(game_meta_down_corr_df.corr())
-    else :
-        st.text('')
-
-    if st.checkbox('가격과 평점의 상관관계 분석 및 차트보기') :
-               
-        game_meta_price_corr_df = df[['Game','Metascore','Price']].sort_values('Price', ascending=False)
-        fig3 = plt.figure()
-        
-        sb.regplot(data=game_meta_price_corr_df, x='Metascore', y='Price')
-        plt.title('Metascore & Price Corr')
-        plt.xlabel('Metascore')
-        plt.ylabel('Price')
-        plt.show()
-                
-        st.pyplot(fig3)
-        st.dataframe(game_meta_price_corr_df.corr())
-    else :
-        st.text('')
     
     if st.checkbox('게임회사별 판매중인 게임의 갯수와 평균평점보기') :
         public_meta_mean_df = df.groupby('Publishers')['Metascore'].mean().to_frame()
@@ -168,14 +108,33 @@ def main() :
     else :
         st.text('')
     
+    
+    col_list = df.columns[ : ]
+    selected_col = st.selectbox('최대 최소 원하는 컬럼 선택', col_list)
+
+    df_max = df.loc[df[selected_col] == df[selected_col].max(),]
+    df_min = df.loc[df[selected_col] == df[selected_col].min(),]
+    
+    st.text('{}컬럼의 최대값에 해당하는 데이터 입니다.'.format(selected_col))
+    st.dataframe(df_max)
+    st.text('{}컬럼의 최소값에 해당하는 데이터 입니다.'.format(selected_col))
+    st.dataframe(df_min)
+
+    selected_list = st.multiselect('컬럼들 선택', col_list)
+
+    # print(selected_list)
+
+    if len(selected_list) > 1 :
+        fig1 = sb.pairplot(data=df[selected_list])
+        st.pyplot(fig1)
+
+    st.text('선택하신 컬럼끼리의 상관계수입니다.')
+    st.dataframe(df[selected_list].corr())
+
     st.title('')
     st.title('')
     st.title('')
     st.text('데이터는 2022-05-20 기준 데이터입니다. \nReference : https://www.kaggle.com/datasets/eringray/steam-games-dataset.')
-
-
-
-
 
 
 if __name__ == '__main__' :
