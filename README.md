@@ -24,7 +24,7 @@
 ![Visual Studio Code Badge](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logo=Visual%20Studio%20Code&logoColor=white)
 ![Amazon AWS Badge](https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat&logo=Amazon%20AWS&logoColor=white)
 
-<img src=https://user-images.githubusercontent.com/105832364/172336299-9d62d530-4560-4f60-bb51-456003cf04f2.jpg width="855" height="400"/>
+<img src=https://user-images.githubusercontent.com/105832364/172336299-9d62d530-4560-4f60-bb51-456003cf04f2.jpg width="855" height="400"/><br/>
   - 개요
     - Steam Game에서 제공하는 게임 정보, 평점, 가격, 다운로드수에 대한 EDA대시보드 입니다.
   
