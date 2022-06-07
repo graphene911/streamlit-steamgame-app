@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=Slice&color=0:fc00ff,100:00dbde&height=150&section=header&text=Steam%20Game&fontSize=50&&fontColor=f7f5f5&animation=fadeIn)
+![header](https://capsule-render.vercel.app/api?type=Waving&color=0:fc00ff,100:00dbde&height=220&section=header&text=Steam%20Game&fontSize=100&&fontColor=f7f5f5&animation=fadeIn)
 <br/>
 ### GRAPHENE911 :gem: <br/><br/>
 [![GitHub Badge](https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white)](https://github.com/graphene911/)
