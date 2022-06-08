@@ -14,7 +14,6 @@
 ### Library
 [![NumPy Badge](https://img.shields.io/badge/NumPy-013243?style=flat&logo=NumPy&logoColor=white)](https://numpy.org/install/)
 [![pandas Badge](https://img.shields.io/badge/pandas-150458?style=flat&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![scikit-learn Badge](https://img.shields.io/badge/scikit-learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/stable/install.html)
 [![Streamlit Badge](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=Streamlit&logoColor=white)](https://streamlit.io/)
 [![matplotlib.pyplot Badge](https://img.shields.io/badge/matplotlib.pyplot-F7931E?style=flat&logo=matplotlib.pyplot&logoColor=white)](https://matplotlib.org/stable/users/installing/index.html)
 [![Seaborn Badge](https://img.shields.io/badge/Seaborn-232F3E?style=flat&logo=Seaborn&logoColor=white)](https://seaborn.pydata.org/installing.html)
