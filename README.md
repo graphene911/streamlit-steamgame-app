@@ -57,4 +57,4 @@
   - Steam_Games_Dataset : https://www.kaggle.com/datasets/eringray/steam-games-dataset
 <br/>
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=0:fc00ff,100:00dbde&height=100&section=footer)
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=0:00dbde,100:fc00ff&height=100&section=footer)
