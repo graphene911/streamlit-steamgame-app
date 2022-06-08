@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 def main() :
     
-
+    # streamlit 화면 비율
     st.set_page_config(layout="wide")
 
     st.title('Game Info & EDA \n 스팀게임에서 제공하는 게임 정보와 평점과 가격, 다운로드수에 대한 EDA페이지 입니다.')
@@ -27,7 +27,7 @@ def main() :
     st.title('Game Info')
     
 
-    
+    # 사이드바 이미지
     img2 = Image.open('data/steam_logo1.jpg')
     st.sidebar.image(img2, width=305)
 
@@ -37,6 +37,7 @@ def main() :
     df = df.drop('Average_Hours-Played_Since_2009', axis=1)
     df = df.drop('Median_Hours_Played_Since_2009', axis=1)
 
+    # 전체게임 검색
     game_serch = st.sidebar.text_input('게임 검색')
     result = df.loc[ df['Game'].str.lower().str.contains(game_serch.lower()),]
 
@@ -47,6 +48,7 @@ def main() :
     
     st.subheader('Game Type별 인기순위 TOP10')
     
+    # 게임 타입별 인기 top10검색
     game_type_list = ['Strategy', 'Action', 'RPG', 'Adventure', 'Indie', 'Simulation','Sports']
 
     my_choice = st.sidebar.selectbox('TOP 10 Game Type 선택', game_type_list)
@@ -75,6 +77,7 @@ def main() :
     st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
     
+    # 무료게임 top100 검색
     df_free = df.loc[ df['Price'] == 0 ]
     df_free = df_free.sort_values('Download', ascending=False).head(100)
     
@@ -86,6 +89,7 @@ def main() :
     st.info('Metascore : 평점 / Price : 가격 / Game Type : 장르 / Game : 게임이름 / Release_date : 출시일 / Download : 다운로드 수 / Publishers : 제작사')
     st.title('')
     
+    # 스팀게임 EDA
     st.title('EDA')
     column_list = df.columns
     column_list = st.multiselect('스팀게임 데이터 컬럼별 보기 (중복 선택 가능)', column_list)
