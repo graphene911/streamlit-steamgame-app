@@ -48,7 +48,7 @@
 <br/>
 
 ## URL
-  - http://54.180.100.25:8502/
+  - http://ec2-54-180-100-25.ap-northeast-2.compute.amazonaws.com:8502/
 
 
 <br/>
